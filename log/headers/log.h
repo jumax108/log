@@ -16,7 +16,7 @@ public:
 	int setDirectory(const wchar_t* dirName);
 	void setPrintGroup(LOG_GROUP printGroup);
 
-	void log(const wchar_t* fileName, LOG_GROUP printGroup, const wchar_t* format, ...);
+	void operator()(const wchar_t* fileName, LOG_GROUP printGroup, const wchar_t* format, ...);
 
 private:
 

@@ -1,7 +1,7 @@
 #include "headers\log.h"
 
-void CLog::log(const wchar_t* fileName, LOG_GROUP printGroup, const wchar_t* format, ...){
-
+void CLog::operator()(const wchar_t* fileName, LOG_GROUP printGroup, const wchar_t* format, ...){
+	
 	if((unsigned __int64)(_printGroup & printGroup) == 0){
 		return ;
 	}
@@ -33,7 +33,6 @@ void CLog::log(const wchar_t* fileName, LOG_GROUP printGroup, const wchar_t* for
 		delete fullFileName;
 
 	} unlock();
-
 }
 
 void CLog::setPrintGroup(LOG_GROUP printGroup){
