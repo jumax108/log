@@ -37,7 +37,6 @@
 *.lai
 *.la
 *.a
-*.lib
 
 # Executables
 *.exe
@@ -86,6 +85,9 @@ $RECYCLE.BIN/
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+# Mono auto generated files
+mono_crash.*
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -99,10 +101,8 @@ x86/
 bld/
 [Bb]in/
 [Oo]bj/
-objectFile/
-objectFiles/
-objFile/
-objectFiles/
+[Ll]og/
+[Ll]ogs/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -435,5 +435,5 @@ FodyWeavers.xsd
 # End of https://www.toptal.com/developers/gitignore/api/windows,c++,visualstudio
 
 
-*.txt
+
 *.dmp
