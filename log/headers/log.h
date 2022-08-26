@@ -13,7 +13,7 @@ public:
 
 	CLog();
 
-	int setDirectory(const wchar_t* dirName);
+	void setDirectory(const wchar_t* dirName);
 	void setPrintGroup(LOG_GROUP printGroup);
 
 	void operator()(const wchar_t* fileName, LOG_GROUP printGroup, const wchar_t* format, ...);
@@ -41,4 +41,12 @@ inline LOG_GROUP operator|(LOG_GROUP left, LOG_GROUP right){
 
 inline LOG_GROUP operator&(LOG_GROUP left, LOG_GROUP right){
 	return (LOG_GROUP)((unsigned __int64)left & (unsigned __int64)right);		
+}
+
+void CLog::lock() {
+	AcquireSRWLockExclusive(&_lock);
+}
+
+void CLog::unlock() {
+	ReleaseSRWLockExclusive(&_lock);
 }

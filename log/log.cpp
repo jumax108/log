@@ -41,13 +41,13 @@ void CLog::setPrintGroup(LOG_GROUP printGroup){
 
 }
 
-int CLog::setDirectory(const wchar_t* dirName){
+void CLog::setDirectory(const wchar_t* dirName){
 
 	_directory = (wchar_t*)dirName;
 
 	_directoryLen = wcslen(dirName);
 
-	return _wmkdir(dirName);
+	_wmkdir(dirName);
 
 }
 
@@ -56,12 +56,4 @@ CLog::CLog(){
 	_directory = nullptr;
 	InitializeSRWLock(&_lock);
 
-}
-
-void CLog::lock(){
-	AcquireSRWLockExclusive(&_lock);
-}
-
-void CLog::unlock(){
-	ReleaseSRWLockExclusive(&_lock);
 }
