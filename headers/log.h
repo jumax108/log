@@ -5,6 +5,9 @@
 #include <stdio.h>
 #include <strsafe.h>
 
+#include "dump\headers\dump.h"
+#pragma comment(lib, "dump\\MSVC\\release\\dump")
+
 enum class LOG_GROUP;
 
 class CLog{

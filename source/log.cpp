@@ -14,11 +14,16 @@ void CLog::operator()(const wchar_t* fileName, LOG_GROUP printGroup, const wchar
 	StringCchPrintf(fullFileName, fullFileNameLen, L"%s\\%s", _directory, fileName);
 
 
-	lock(); {
+	lock(); 
+	do{
 		
 		FILE* file;
 
 		_wfopen_s(&file, fullFileName, L"a");
+		if (file == nullptr) {
+			CDump::crash();
+			break;
+		}
 		
 		va_list vaList;
 		va_start(vaList, format);
@@ -30,9 +35,10 @@ void CLog::operator()(const wchar_t* fileName, LOG_GROUP printGroup, const wchar
 
 		fclose(file);
 
-		delete fullFileName;
+	} while (false);
 
-	} unlock();
+	delete[] fullFileName;
+	unlock();
 }
 
 void CLog::setPrintGroup(LOG_GROUP printGroup){
@@ -47,13 +53,21 @@ void CLog::setDirectory(const wchar_t* dirName){
 
 	_directoryLen = wcslen(dirName);
 
-	_wmkdir(dirName);
+	int wmkdirResult = _wmkdir(dirName);
+	if (wmkdirResult == -1) {
+		errno_t err;
+		_get_errno(&err);
+		CDump::crash();
+	}
 
 }
 
 CLog::CLog(){
 
 	_directory = nullptr;
+	_directoryLen = 0;
+	ZeroMemory(&_printGroup, sizeof(LOG_GROUP));
+
 	InitializeSRWLock(&_lock);
 
 }

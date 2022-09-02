@@ -1,7 +1,5 @@
-/.vs
+/MSVC/.vs
+/MSVC/release
 /logTest
 *.bat
-*.sln
-*.vcxproj
-*.vcxproj.filters
-*.vcxproj.user
+/lib
