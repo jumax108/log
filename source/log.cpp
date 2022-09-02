@@ -55,9 +55,11 @@ void CLog::setDirectory(const wchar_t* dirName){
 
 	int wmkdirResult = _wmkdir(dirName);
 	if (wmkdirResult == -1) {
-		errno_t err;
+		int err;
 		_get_errno(&err);
-		CDump::crash();
+		if (err != EEXIST) {
+			CDump::crash();
+		}
 	}
 
 }

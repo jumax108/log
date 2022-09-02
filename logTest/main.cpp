@@ -1,6 +1,8 @@
 
 #include "..\headers\log.h"
+#pragma comment(lib, "..\\MSVC\\release\\log.lib")
 
+CDump dump;
 
 int main(){
 

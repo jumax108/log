@@ -6,7 +6,7 @@
 #include <strsafe.h>
 
 #include "dump\headers\dump.h"
-#pragma comment(lib, "dump\\MSVC\\release\\dump")
+#pragma comment(lib, "dump\\MSVC\\release\\dump.lib")
 
 enum class LOG_GROUP;
 

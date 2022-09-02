@@ -1,5 +1,5 @@
 /MSVC/.vs
 /MSVC/release
-/logTest
+/logTest/*
 *.bat
 /lib
