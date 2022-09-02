@@ -1,4 +1,4 @@
-#include "headers\log.h"
+#include "..\headers\log.h"
 
 void CLog::operator()(const wchar_t* fileName, LOG_GROUP printGroup, const wchar_t* format, ...){
 	
